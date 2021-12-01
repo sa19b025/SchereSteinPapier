@@ -1,3 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Sora');
+@import url('https://fonts.googleapis.com/css?family=Finger Paint');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+html{
+  height: 100%;
+}
 body {
-  background-image: url("../images/Steinernes_Meer_bw.jpg");
+  background-image: url("../images/Steinernes_Meer-min.jpg");
+  background-repeat: no-repeat;
+  background-color: #c4c4c4;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-family: 'Sora';
+  font-size: 20pt;
+  height: 100%;
+}
+.container {
+  background-color: hsla(0, 0%, 100%, 0.4);
+  margin-top: 30px;
+  border-radius: 15px;
+  padding: 20px;
+}
+h1{
+  font-family: 'Finger Paint';
+  font-size: 38pt;
+  font-weight: bold;
+  line-height: 32pt;
+  text-align: center;
+  margin: 60px;
+}
+.button-group {
+  background-color: green;
+}
+.camPanel {
+  text-align: center;
+}
+#liveVideo {
+	width: 500px;
+	height: 375px;
+	background-color: #666;
 }
