@@ -15,12 +15,24 @@
       <h1>Rock, Paper, Scissors</h1>
       <p>Press Play to start playing.</p>
       <p>
-        Click on the "Snapshot" button to Capture the current Snapshot and send it to the API.
+        Click on the "Snapshot" button to Capture the current Snapshot and show
+        it on screen.
       </p>
+
+        <div class="camPanel">
+          <video id="video" autoplay="true"></video><br />
+          <button class="btn btn-primary button-snap" id="snapshot">
+            Snapshot
+          </button><br />
+        <canvas id="canvas" width="224" height="224"></canvas>
+        <img id="photo" width="224" height="224" />
+        </div>
+
 
       <div class="camPanel">
         <video id="liveVideo" autoplay="true"></video><br />
         <button class="btn btn-primary button-group">Snapshot</button>
+
       </div>
     </div>
   </body>
