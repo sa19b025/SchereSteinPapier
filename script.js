@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ctx.drawImage(video, 0, 49, 224, 126);
     console.log("canvas drawn");
 
+    //TODO: Stop Video from playing
+    //TODO: Remove Video Tag
+
     let img = document.getElementById("photo");
 
     let data = canvas.toDataURL("image/png");
@@ -38,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     img = document.getElementById("photo");
 
     console.log(img);
+    
+
 
     predict(img);
   });
@@ -60,16 +65,18 @@ async function predict(img) {
   // predict can take in an image, video or canvas html element
   const prediction = await model.predict(img);
 
-  console.log(img);
-
   console.log(prediction);
 
-  const predictionPercentageRock = prediction[0].probability;
-  console.log("Rock " + predictionPercentageRock + "%");
-  const predictionPercentagePaper = prediction[1].probability;
-  console.log("Paper " + predictionPercentagePaper + "%");
-  const predictionPercentageScissors = prediction[2].probability;
-  console.log("Scissors " + predictionPercentageScissors + "%");
-
+  const predictionPercentage0 = prediction[0].probability;
+  const predictionClassName0 = prediction[0].className;
+  console.log(predictionClassName0 + " " + predictionPercentage0*100 + "%");
+  
+  const predictionPercentage1 = prediction[1].probability;
+  const predictionClassName1 = prediction[1].className;
+  console.log(predictionClassName1 + " " + predictionPercentage1*100 + "%");
+  
+  const predictionPercentage2 = prediction[2].probability;
+  const predictionClassName2 = prediction[2].className;
+  console.log(predictionClassName2 + " " + predictionPercentage2*100 + "%");
 
 }
