@@ -6,7 +6,7 @@ html{
   height: 100%;
 }
 body {
-  background-image: url("../images/Steinernes_Meer-min.jpg");
+  /* background-image: url("../images/Steinernes_Meer-min.jpg"); */
   background-repeat: no-repeat;
   background-color: #c4c4c4;
   background-attachment: fixed;
@@ -14,7 +14,6 @@ body {
   background-size: cover;
   font-family: 'Sora';
   font-size: 20pt;
-  height: 100%;
 }
 .container {
   background-color: hsla(0, 0%, 100%, 0.4);
@@ -30,14 +29,15 @@ h1{
   text-align: center;
   margin: 60px;
 }
-.button-group {
+.button-snap {
   background-color: green;
+  margin: 20px;
 }
 .camPanel {
   text-align: center;
 }
-#liveVideo {
-	width: 500px;
-	height: 375px;
-	background-color: #666;
+canvas{
+  display: none;
+  background-color: hsl(0, 0%, 50%);
+
 }
