@@ -8,7 +8,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <link rel="stylesheet" href="./styles/style.css" />
     <script type="text/javascript" src="./script.js"></script>
   </head>
@@ -26,10 +26,33 @@
         <button class="btn btn-primary button-snap" id="snapshot">
           Snapshot</button
         ><br />
-        <canvas id="canvas" width="224" height="224"></canvas>
-        <img id="photo" width="224" height="224" />
-        <div id="lable-container"></div>
+        <canvas hidden id="canvas" width="224" height="224"></canvas>
+        <canvas hidden id="canvas2" width="848" height="477"></canvas>
+        <img hidden id="photo" width="224" height="224" />
+        <img class="dontShow" id="photo2" width="848" height="477" />
+        <br />
+        <h2 class="dontShow" id="playerValue"></h2>
+        <h2 class="dontShow" id="npcRnd"></h2>
+        <h2 class="dontShow" id="result"></h2>
+        <br />
+        <h2 class="dontShow" id="score"></h2>
+        <br />
+        <button class="btn btn-primary dontShow" id="deleteCookies">
+          Delete Score
+        </button>
+
+        <h3 id="headlinePrediction" class="dontShow">Prediction:</h3>
+        <br />
+        <ul id="predictionList"></ul>
+        <button class="btn btn-primary dontShow" id="continue">Continue</button>
       </div>
+      <button
+        class="btn btn-primary dontShow"
+        id="replay"
+        onClick="window.location.reload();"
+      >
+        Restart
+      </button>
     </div>
   </body>
 </html>
