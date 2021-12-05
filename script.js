@@ -43,11 +43,33 @@ document.addEventListener("DOMContentLoaded", function (event) {
   });
 });
 
+// More API functions here:
+// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
 async function predict(img) {
-  
-    
-  
-      console.log("Predictions: ");
-      console.log(predictions);
+  const URL = "https://teachablemachine.withgoogle.com/models/CoWEt_sY5/";
+
+  let model, labelContainer;
+  const modelURL = URL + "model.json";
+  const metadataURL = URL + "metadata.json";
+
+  model = await tmImage.load(modelURL, metadataURL);
+  maxPredictions = model.getTotalClasses();
+  labelContainer = document.getElementById("label-container");
+
+  // predict can take in an image, video or canvas html element
+  const prediction = await model.predict(img);
+
+  console.log(img);
+
+  console.log(prediction);
+
+  const predictionPercentageRock = prediction[0].probability;
+  console.log("Rock " + predictionPercentageRock + "%");
+  const predictionPercentagePaper = prediction[1].probability;
+  console.log("Paper " + predictionPercentagePaper + "%");
+  const predictionPercentageScissors = prediction[2].probability;
+  console.log("Scissors " + predictionPercentageScissors + "%");
+
 
 }
