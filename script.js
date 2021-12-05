@@ -1,56 +1,3 @@
-var CACHE_VERSION = 1;
-
-// Shorthand identifier mapped to specific versioned cache.
-var CURRENT_CACHES = {
-  font: "font-cache-v" + CACHE_VERSION,
-};
-
-self.addEventListener("activate", function (event) {
-  var expectedCacheNames = Object.keys(CURRENT_CACHES).map(function (key) {
-    return CURRENT_CACHES[key];
-  });
-
-  // Active worker won't be treated as activated until promise resolves successfully.
-  event.waitUntil(
-    caches.keys().then(function (cacheNames) {
-      return Promise.all(
-        cacheNames.map(function (cacheName) {
-          if (expectedCacheNames.indexOf(cacheName) == -1) {
-            console.log("Deleting out of date cache:", cacheName);
-
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
-
-self.addEventListener("fetch", function (event) {
-  console.log("Handling fetch event for", event.request.url);
-
-  event.respondWith(
-    // Opens Cache objects that start with 'font'.
-    caches.open(CURRENT_CACHES["font"]).then(function (cache) {
-      return cache
-        .match(event.request)
-        .then(function (response) {
-          if (response) {
-            console.log(" Found response in cache:", response);
-
-            return response;
-          }
-        })
-        .catch(function (error) {
-          // Handles exceptions that arise from match() or fetch().
-          console.error("  Error in fetch handler:", error);
-
-          throw error;
-        });
-    })
-  );
-});
-
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -96,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let maxPredictionVal = "";
   let valueNPC = "";
   let result = "";
+  let imgfilenamePlayer = "";
+  let imgfilenameComputer = "";
 
   if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices
@@ -121,9 +70,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
   console.log("added EventListener");
 
   snapshotButton.addEventListener("click", function () {
+ 
+
+
     ctx.drawImage(video, 0, 49, 224, 126);
     ctx2.drawImage(video, 0, 0, 848, 477);
     console.log("canvas drawn");
+
+    document.getElementById("break1").className = "dontShow";
 
     stopvideo();
 
@@ -146,8 +100,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     console.log(img2);
     predict(img);
 
-    document.getElementById("continue").className = "show";
-    document.getElementById("replay").className = "show";
+    document.getElementById("continue").className = "show btn btn-primary button";
+    document.getElementById("replay").className = "show btn btn-primary button";
 
     const continueButton = document.getElementById("continue");
     console.log("added Continue Button EventListener");
@@ -197,8 +151,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
       console.log(maxPredictionVal + " " + maxPercentage);
     }
   }
-  function stopvideo() {
-    return 0;
+  function stopvideo(e) {
+    var stream = video.srcObject;
+    var tracks = stream.getTracks();
+
+    for (var i = 0; i < tracks.length; i++) {
+      var track = tracks[i];
+      track.stop();
+    }
+
+    video.srcObject = null;
   }
 
   function npcRand() {
@@ -206,11 +168,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById("headlinePrediction").className = "dontShow";
     document.getElementById("predictionList").className = "dontShow";
     document.getElementById("photo2").className = "dontShow";
+    document.getElementById("p1").className = "dontShow";
+    document.getElementById("p2").className = "show";
     document.getElementById("result").className = "show";
     document.getElementById("score").className = "show";
-    document.getElementById("deleteCookies").className = "show";
+    document.getElementById("deleteCookies").className = "show button btn btn-danger";
     document.getElementById("npcRnd").className = "show";
     document.getElementById("playerValue").className = "show";
+    document.getElementById("result").className = "inlineBlock";
 
     const deleteCookies = document.getElementById("deleteCookies");
     deleteCookies.addEventListener("click", function () {
@@ -220,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       document.cookie =
         "PlayerWins=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       document.getElementById("deleteCookies").className = "dontShow";
+      document.getElementById("score").className = "dontShow";
     });
 
     const number = Math.floor(Math.random() * 100) % 3;
@@ -268,6 +234,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
     setCookie("PlayerWins", playerWins, 5);
     setCookie("ComputerWins", computerWins, 5);
+
+    imgfilenamePlayer = "/images/" + valuePlayer.toLowerCase() + "_player.png";
+    imgfilenameComputer = "/images/" + valueNPC.toLowerCase() + "_computer.png";
+    console.log(imgfilenamePlayer + " " + imgfilenameComputer);
+    document.getElementById("playerValueImage").src = imgfilenamePlayer;
+    document.getElementById("computerValueImage").src = imgfilenameComputer;
+
+    document.getElementById("playerValueImage").className = "show";
+    document.getElementById("computerValueImage").className = "show";
+    document.getElementById("break4").className = "show";
+    document.getElementById("break5").className = "show";
+    document.getElementById("p2").className = "dontShow";
+    document.getElementById("p3").className = "dontShow";
 
     const plaValTag = document.getElementById("playerValue");
     plaValTag.innerHTML =

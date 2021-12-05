@@ -15,39 +15,59 @@
   <body>
     <div class="container">
       <h1>Rock, Paper, Scissors</h1>
-      <p>Press Play to start playing.</p>
-      <p>
+      <p id="p1">
         Click on the "Snapshot" button to Capture the current Snapshot and show
         it on screen.
       </p>
+      <p class="dontShow" id="p2">
+        Click the "Continue" button to see what the Computer chose and who
+        wins.<br />
+        Or click the "Restart" button to start over.
+      </p>
+      <p class="dontShow" id="p3">
+        If you want to reset your score against the computer, click the "Delete
+        Score".<br />
+        Or with the "Restart" button you can start a new game.
+      </p>
 
       <div class="camPanel">
-        <video id="video" autoplay="true"></video><br />
+        <video id="video" autoplay="true"></video><br id="break1" />
+        <h1 class="dontShow" id="countdownSign"></h1>
         <button class="btn btn-primary button-snap" id="snapshot">
           Snapshot</button
-        ><br />
+        ><br class="dontShow" id="break2" />
         <canvas hidden id="canvas" width="224" height="224"></canvas>
         <canvas hidden id="canvas2" width="848" height="477"></canvas>
         <img hidden id="photo" width="224" height="224" />
         <img class="dontShow" id="photo2" width="848" height="477" />
-        <br />
-        <h2 class="dontShow" id="playerValue"></h2>
-        <h2 class="dontShow" id="npcRnd"></h2>
+        <br class="dontShow" id="break3" />
+        <div class="flex-container">
+          <div>
+            <img id="playerValueImage" class="dontShow" />
+            <br class="dontShow" id="break4" />
+            <h2 class="dontShow" id="playerValue"></h2>
+          </div>
+          <div>
+            <img id="computerValueImage" class="dontShow" />
+            <br class="dontShow" id="break5" />
+            <h2 class="dontShow" id="npcRnd"></h2>
+          </div>
+        </div>
         <h2 class="dontShow" id="result"></h2>
         <br />
         <h2 class="dontShow" id="score"></h2>
         <br />
-        <button class="btn btn-primary dontShow" id="deleteCookies">
+        <button class="dontShow" id="deleteCookies">
           Delete Score
         </button>
 
         <h3 id="headlinePrediction" class="dontShow">Prediction:</h3>
         <br />
         <ul id="predictionList"></ul>
-        <button class="btn btn-primary dontShow" id="continue">Continue</button>
+        <button class="dontShow" id="continue">Continue</button>
       </div>
       <button
-        class="btn btn-primary dontShow"
+        class="dontShow"
         id="replay"
         onClick="window.location.reload();"
       >
