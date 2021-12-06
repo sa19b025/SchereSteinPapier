@@ -1,5 +1,5 @@
 {
-  "name": "SchereSteinPapier",
+  "name": "scheresteinpapier",
   "source": "index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "version": "1.0.0",
@@ -21,6 +21,6 @@
   "homepage": "https://github.com/sa19b025/SchereSteinPapier#readme",
   "dependencies": {},
   "devDependencies": {
-    "parcel": "latest"
+    "parcel": "^2.0.1"
   }
 }
