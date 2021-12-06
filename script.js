@@ -1,4 +1,4 @@
-/*function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toUTCString();
@@ -27,7 +27,7 @@ if (!getCookie("PlayerWins") && !getCookie("ComputerWins")) {
 }
 
 let playerWins = getCookie("PlayerWins");
-let computerWins = getCookie("ComputerWins");*/
+let computerWins = getCookie("ComputerWins");
 
 console.log(playerWins, computerWins);
 
