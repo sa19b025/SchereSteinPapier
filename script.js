@@ -1,4 +1,4 @@
-function setCookie(cname, cvalue, exdays) {
+/*function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toUTCString();
@@ -27,7 +27,7 @@ if (!getCookie("PlayerWins") && !getCookie("ComputerWins")) {
 }
 
 let playerWins = getCookie("PlayerWins");
-let computerWins = getCookie("ComputerWins");
+let computerWins = getCookie("ComputerWins");*/
 
 console.log(playerWins, computerWins);
 
@@ -114,7 +114,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
   async function predict(img) {
-    const URL = "https://teachablemachine.withgoogle.com/models/CoWEt_sY5/";
+    // const URL = "https://teachablemachine.withgoogle.com/models/CoWEt_sY5/";
+    // Link zum Freigeben Version 2: https://teachablemachine.withgoogle.com/models/SIbkI-Nno/
+    const URL = "https://teachablemachine.withgoogle.com/models/SIbkI-Nno/";
 
     let model;
     const modelURL = URL + "model.json";
