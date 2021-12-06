@@ -1,0 +1,24 @@
+{
+  "name": "SchereSteinPapier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sa19b025/SchereSteinPapier.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sa19b025/SchereSteinPapier/issues"
+  },
+  "homepage": "https://github.com/sa19b025/SchereSteinPapier#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}
